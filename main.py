@@ -12,6 +12,12 @@ WORK_MIN = 25
 SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 20
 reps = 0
+timer = None
+
+
+# ---------------------------- TIMER RESET ------------------------------- #
+def reset_timer():
+    pass
 
 
 # ---------------------------- TIMER MECHANISM ------------------------------- #
@@ -43,8 +49,9 @@ def count_down(count):
     # Change config of a particular item from the canvas:
     canvas.itemconfig(timer_text, text=f"{count_min}:{count_sec}")
     if count > 0:
+        global timer
         # Wait for 1000 ms, call count_down fn with 'count - 1' arg
-        window.after(1000, count_down, count - 1)
+        timer = window.after(1000, count_down, count - 1)
     else:
         start_timer()
         checkmarks = ""
