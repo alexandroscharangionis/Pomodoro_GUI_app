@@ -20,8 +20,8 @@ window.config(padx=100, pady=50, bg=YELLOW)
 canvas = Canvas(width=200, height=224, bg=YELLOW, highlightthickness=0)
 tomato_img = PhotoImage(file="tomato.png")
 canvas.create_image(100, 112, image=tomato_img)
-canvas.create_text(100, 130, text="00:00", fill="white",
-                   font=(FONT_NAME, 35, "bold"))
+timer_text = canvas.create_text(100, 130, text="00:00", fill="white",
+                                font=(FONT_NAME, 35, "bold"))
 canvas.grid(column=1, row=1)
 
 timer_label = Label(text="Timer", fg=GREEN, bg=YELLOW,
@@ -35,5 +35,16 @@ start_btn = Button(text="Start", highlightbackground=YELLOW)
 start_btn.grid(column=0, row=2)
 reset_btn = Button(text="Reset", highlightbackground=YELLOW)
 reset_btn.grid(column=2, row=2)
+
+# ---------------------------- COUNTDOWN MECHANISM ------------------------------- #
+
+
+def count_down(count):
+    # Change config of a particular item from the canvas:
+    canvas.itemconfig(timer_text, text=count)
+    if count > 0:
+        # Wait for 1000 ms, call count_down fn with 'count - 1' arg
+        window.after(1000, count_down, count - 1)
+
 
 window.mainloop()
