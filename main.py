@@ -28,4 +28,9 @@ timer_label = Label(text="Timer", fg=GREEN, bg=YELLOW,
                     font=(FONT_NAME, 45, "bold"))
 timer_label.grid(column=1, row=0)
 
+start_btn = Button(text="Start", highlightbackground=YELLOW)
+start_btn.grid(column=0, row=2)
+reset_btn = Button(text="Reset", highlightbackground=YELLOW)
+reset_btn.grid(column=2, row=2)
+
 window.mainloop()
