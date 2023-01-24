@@ -17,10 +17,16 @@ timer = None
 
 # ---------------------------- TIMER RESET ------------------------------- #
 def reset_timer():
-    pass
-
+    window.after_cancel(timer)
+    canvas.itemconfig(timer_text, text="00:00")
+    timer_label.config(text="Timer")
+    checkmark_label.config(text="")
+    global reps
+    reps = 0
 
 # ---------------------------- TIMER MECHANISM ------------------------------- #
+
+
 def start_timer():
     global reps
     reps += 1
@@ -84,7 +90,8 @@ checkmark_label.grid(column=1, row=3)
 start_btn = Button(text="Start", highlightbackground=YELLOW,
                    command=start_timer)
 start_btn.grid(column=0, row=2)
-reset_btn = Button(text="Reset", highlightbackground=YELLOW)
+reset_btn = Button(text="Reset", highlightbackground=YELLOW,
+                   command=reset_timer)
 reset_btn.grid(column=2, row=2)
 
 
