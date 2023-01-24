@@ -11,7 +11,22 @@ WORK_MIN = 25
 SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 20
 
+
+# ---------------------------- TIMER MECHANISM ------------------------------- #
+def start_timer():
+    count_down(5)
+
+
+# ---------------------------- COUNTDOWN MECHANISM ------------------------------- #
+def count_down(count):
+    # Change config of a particular item from the canvas:
+    canvas.itemconfig(timer_text, text=count)
+    if count > 0:
+        # Wait for 1000 ms, call count_down fn with 'count - 1' arg
+        window.after(1000, count_down, count - 1)
+
 # ---------------------------- UI SETUP ------------------------------- #
+
 
 window = Tk()
 window.title("Pomodoro")
@@ -31,20 +46,11 @@ checkmark_label = Label(text="✔", fg=GREEN, bg=YELLOW,
                         font=(FONT_NAME, 35, "bold"))
 checkmark_label.grid(column=1, row=3)
 
-start_btn = Button(text="Start", highlightbackground=YELLOW)
+start_btn = Button(text="Start", highlightbackground=YELLOW,
+                   command=start_timer)
 start_btn.grid(column=0, row=2)
 reset_btn = Button(text="Reset", highlightbackground=YELLOW)
 reset_btn.grid(column=2, row=2)
-
-# ---------------------------- COUNTDOWN MECHANISM ------------------------------- #
-
-
-def count_down(count):
-    # Change config of a particular item from the canvas:
-    canvas.itemconfig(timer_text, text=count)
-    if count > 0:
-        # Wait for 1000 ms, call count_down fn with 'count - 1' arg
-        window.after(1000, count_down, count - 1)
 
 
 window.mainloop()
