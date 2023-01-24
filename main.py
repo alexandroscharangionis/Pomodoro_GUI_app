@@ -27,6 +27,9 @@ canvas.grid(column=1, row=1)
 timer_label = Label(text="Timer", fg=GREEN, bg=YELLOW,
                     font=(FONT_NAME, 45, "bold"))
 timer_label.grid(column=1, row=0)
+checkmark_label = Label(text="✔", fg=GREEN, bg=YELLOW,
+                        font=(FONT_NAME, 35, "bold"))
+checkmark_label.grid(column=1, row=3)
 
 start_btn = Button(text="Start", highlightbackground=YELLOW)
 start_btn.grid(column=0, row=2)
