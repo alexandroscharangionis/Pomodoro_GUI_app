@@ -47,6 +47,11 @@ def count_down(count):
         window.after(1000, count_down, count - 1)
     else:
         start_timer()
+        checkmarks = ""
+        work_sessions = math.floor(reps/2)
+        for _ in range(work_sessions):
+            checkmarks += "✔"
+        checkmark_label.config(text=checkmarks)
 
 # ---------------------------- UI SETUP ------------------------------- #
 
@@ -65,7 +70,7 @@ canvas.grid(column=1, row=1)
 timer_label = Label(text="Timer", fg=GREEN, bg=YELLOW,
                     font=(FONT_NAME, 45, "bold"))
 timer_label.grid(column=1, row=0)
-checkmark_label = Label(text="✔", fg=GREEN, bg=YELLOW,
+checkmark_label = Label(fg=GREEN, bg=YELLOW,
                         font=(FONT_NAME, 35, "bold"))
 checkmark_label.grid(column=1, row=3)
 
